@@ -1,0 +1,15 @@
+Package: PlotTA
+Type: Package
+Title: Plotting Technical Analysis Tools
+Version: 0.1.0
+Author: Nguwi Jiang Yu <nguwijy@hotmail.com>
+Maintainer: Nguwi Jiang Yu <nguwijy@hotmail.com>
+Description: Plotting Technical Analysis Tools for Easy Visualization for R
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports:
+    quantmod,
+    TTR,
+    plotly
+RoxygenNote: 6.0.1.9000
