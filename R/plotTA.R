@@ -43,7 +43,7 @@ plotTA <- function(data, RSIperiod = 14, MAperiod = 20,
     warning("Please input the correct data structure: .csv or xts")
   }
 
-  names(prices) <- c("Index","Open","High","Low","Close","Volume")
+  names(prices) <- c("Date","Open","High","Low","Close","Volume")
 
   bbands_line <- BBands(prices[,c("High","Low","Close")],n=bbandperiod,sd=bbandsd)
   rsi_line <- RSI(prices$Close,n=RSIperiod)
@@ -65,7 +65,7 @@ plotTA <- function(data, RSIperiod = 14, MAperiod = 20,
     )
   )
 
-  hovertxt <- paste("Date: ", prices$Index, "
+  hovertxt <- paste("Date: ", prices$Date, "
                     ",
                     "High: ", prices$High,"
                     ",
@@ -76,7 +76,7 @@ plotTA <- function(data, RSIperiod = 14, MAperiod = 20,
                     "Close: ", prices$Close)
 
   p <- prices %>%
-    plot_ly(x = ~Index,
+    plot_ly(x = ~Date,
             open = ~Open, close = ~Close,
             high = ~High, low = ~Low, type="candlestick",
             name = "prices", hoverinfo = "none") %>%
@@ -102,14 +102,14 @@ plotTA <- function(data, RSIperiod = 14, MAperiod = 20,
            yaxis = list(title = "Prices"))
 
   pp <- prices %>%
-    plot_ly(x=~Index, y=~rsi_line, type='scatter', mode='lines',
+    plot_ly(x=~Date, y=~rsi_line, type='scatter', mode='lines',
             name = "Relative Strength Index (n=14)",
             line = list(color = rsicolor, width = 2)) %>%
     layout(yaxis = list(title = "RSI"))
 
   subplot(p, pp, heights = c(0.7,0.2), nrows=2,
           shareX = TRUE, shareY = FALSE, titleY = TRUE) %>%
-    layout(title = paste("Duration: ",prices$Index[1],"-",prices$Index[dim(prices)[1]]),
+    layout(title = paste("Duration: ",prices$Date[1],"-",prices$Date[dim(prices)[1]]),
            legend = list(orientation = 'h', x = 0.5, y = 1,
                          xanchor = 'center', yref = 'paper',
                          font = list(size = 10),
