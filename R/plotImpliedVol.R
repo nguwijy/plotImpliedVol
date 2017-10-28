@@ -8,6 +8,8 @@
 #'
 #' BS function is a self-written to calculate option price using Black-Scholes equation
 #'
+#' genOptionDF provides a sample of dataframe
+#'
 #' @param df This dataframe should contain strike, type, optionPrice, futurePrice, and time_to_expiry of the option
 #'
 #'
@@ -53,4 +55,15 @@ BS <- function(strike, type, sigEst, futurePrice, time_to_expiry,r) {
   d2 <- (log(futurePrice/strike)-time_to_expiry*sigEst^2/2)/(sigEst*sqrt(time_to_expiry))
   if (type=="C") return(exp(-r*time_to_expiry)*(futurePrice*pnorm(d1)-strike*pnorm(d2)))
   else if (type=="P") return(exp(-r*time_to_expiry)*(-futurePrice*pnorm(-d1)+strike*pnorm(-d2)))
+}
+
+genOptionDF <- function() {
+  #This is just a sample dataframe generator
+  strike <- c(187.5,192.5,195,197.5,197.5,200,202.5,212.5,217.5)
+  type <- c("C","C","P","C","P","C","C","C","C")
+  optionPrice <- c(16.18,13.25,11.13,10.75,12.5,9.68,8.2,5.05,4.3)
+  futurePrice <- rep(195.69,9)
+  time_to_expiry <- rep(.25,9)
+  df <- data.frame(strike,type,optionPrice,futurePrice,time_to_expiry)
+  return(df)
 }

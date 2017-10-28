@@ -18,4 +18,6 @@ plotImplied function is a function that will return the implied volatility using
 and plot the result
 
 BS function is a self-written to calculate option price using Black-Scholes equation
+
+genOptionDF provides a sample of dataframe
 }
