@@ -3,5 +3,5 @@ This is an assignment set up by one of my interviewing company. It aims at plott
 
 ## Usage
 - clone the project
-- install the packages in R (in terminal it is "R CMD INSTALL plotImpliedVol_0.1.0.tar.gz")
+- install the packages in R (in terminal it is "R CMD INSTALL plotImpliedVol_0.1.0.tar.gz"; in R it is "install.packages("plotImpliedVol_0.1.0.tar.gz", repos = NULL, type = "source")")
 - run the example.R for exploration!
